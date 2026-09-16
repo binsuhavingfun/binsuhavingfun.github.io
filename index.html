@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vince Paglicawan — Portfolio</title>
+<meta name="description" content="A portfolio by Vince, a third-year BSIT student from Bacoor, Cavite, Philippines, who builds web apps, designs prototypes, and writes — currently deep in AI automation and always working on something new.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235B6B4F'/%3E%3Ctext x='32' y='44' font-family='Arial, Helvetica, sans-serif' font-weight='700' font-size='34' fill='%23EDE8DE' text-anchor='middle'%3EV%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Vince Paglicawan — Portfolio">
+<meta property="og:description" content="A portfolio by Vince, a third-year BSIT student from Bacoor, Cavite, Philippines, who builds web apps, designs prototypes, and writes — currently deep in AI automation and always working on something new.">
+<meta property="og:image" content="https://binsuhavingfun.github.io/images/push2cart-homepage.webp">
+<meta property="og:url" content="https://binsuhavingfun.github.io/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Space+Grotesk:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDE8DE;
+    --paper-2:#E6E0D2;
+    --ink:#1A1815;
+    --ink-soft:#6B6558;
+    --line:#D6CFBD;
+    --accent:#5B6B4F;
+    --accent-soft:#8A9481;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+  a{color:inherit; text-decoration:none;}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+  .display{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    line-height:0.92;
+  }
+  .serif{ font-family:'Plus Jakarta Sans', sans-serif; font-style:italic; }
+  .label{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-weight:500;
+    font-size:0.72rem;
+    letter-spacing:0.04em;
+    color:var(--ink-soft);
+    font-weight:500;
+  }
+
+  /* Layout shell */
+  .shell{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  @media (max-width:640px){ .shell{ padding:0 20px; } }
+
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:rgba(237,232,222,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 0;
+  }
+  .wordmark{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:700;
+    font-size:1.4rem;
+    letter-spacing:0.01em;
+  }
+  nav.primary ul{
+    list-style:none; display:flex; gap:28px;
+  }
+  nav.primary a{
+    font-size:0.9rem;
+    padding:4px 2px;
+    border-bottom:1px solid transparent;
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+  nav.primary a:hover, nav.primary a[aria-current="page"]{
+    border-color:var(--ink);
+  }
+  nav.primary a[aria-current="page"]{ color:var(--accent); border-color:var(--accent); }
+
+  .menu-btn{ display:none; background:none; border:none; font-size:0.9rem; cursor:pointer; }
+  @media (max-width:720px){
+    nav.primary{ display:none; }
+    .menu-btn{ display:block; }
+    nav.primary.open{
+      display:block; position:absolute; top:100%; left:0; right:0;
+      background:var(--paper); border-bottom:1px solid var(--line); padding:8px 20px 20px;
+    }
+    nav.primary.open ul{ flex-direction:column; gap:16px; }
+  }
+
+  main{ min-height:70vh; }
+  section.view{ display:none; padding:72px 0 100px; }
+  section.view.active{ display:block; animation:fadein 0.4s ease; }
+  @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;} }
+
+  /* Wordmark alter-ego swap: Vince -> Bince on hover/focus */
+  .wm-stack{ position:relative; display:inline-block; }
+  .wm-real, .wm-alt{
+    display:block; grid-area:1/1;
+    transition:opacity 0.25s ease;
+  }
+  .wm-stack{ display:grid; }
+  .wm-real{ opacity:1; }
+  .wm-alt{ opacity:0; }
+  .alter-ego:hover .wm-real, .alter-ego:focus-visible .wm-real{ opacity:0; }
+  .alter-ego:hover .wm-alt, .alter-ego:focus-visible .wm-alt{ opacity:1; }
+
+  /* HOME */
+  .home-hero{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:48px;
+    align-items:end;
+    padding-bottom:56px;
+    border-bottom:1px solid var(--line);
+  }
+  @media (max-width:820px){ .home-hero{ grid-template-columns:1fr; } }
+  .home-hero h1{
+    font-size:clamp(3.2rem, 9vw, 6.4rem);
+    font-weight:700;
+  }
+  .home-hero .role{
+    margin-top:14px; font-size:1.05rem; color:var(--ink-soft); max-width:38ch;
+  }
+  .home-hero .role em{
+    font-style:italic; color:var(--ink);
+  }
+  .home-meta{
+    display:flex; flex-direction:column; gap:10px; align-items:flex-start;
+  }
+  @media (max-width:820px){ .home-meta{ flex-direction:row; flex-wrap:wrap; gap:20px; } }
+
+  .split-preview{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    margin-top:64px;
+  }
+  @media (max-width:820px){ .split-preview{ grid-template-columns:1fr; } }
+  .preview-card{ display:block; }
+  .preview-card .label{ margin-bottom:14px; display:block; }
+  .preview-card .frame{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    aspect-ratio:4/3;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--ink-soft); font-size:0.85rem;
+    overflow:hidden;
+  }
+  .preview-card.words .frame{
+    aspect-ratio:auto; min-height:280px;
+    align-items:flex-start; justify-content:flex-start;
+    padding:28px; text-align:left;
+  }
+  .preview-card .frame p{
+    font-family:'Plus Jakarta Sans', sans-serif; font-style:italic; font-size:1.15rem;
+    line-height:1.7; color:var(--ink);
+  }
+  .preview-card h3{
+    margin-top:16px; font-size:1.1rem; font-weight:500;
+  }
+  .preview-card .sub{ font-size:0.85rem; color:var(--ink-soft); margin-top:2px; }
+
+  /* Section headers reused across pages */
+  .page-head{ margin-bottom:56px; max-width:60ch; }
+  .page-head .label{ margin-bottom:16px; }
+  .page-head h2{ font-size:clamp(2.4rem,6vw,3.6rem); font-weight:700; }
+  .page-head p{ margin-top:16px; color:var(--ink-soft); max-width:52ch; }
+
+  /* WORK */
+  .work-list{ display:flex; flex-direction:column; }
+  .work-item{
+    display:grid; grid-template-columns:0.9fr 1.4fr;
+    gap:40px;
+    padding:40px 0;
+    border-top:1px solid var(--line);
+  }
+  .work-list .work-item:last-child{ border-bottom:1px solid var(--line); }
+  @media (max-width:760px){ .work-item{ grid-template-columns:1fr; gap:18px; } }
+  .work-item .thumb{
+    background:var(--paper-2); border:1px solid var(--line);
+    aspect-ratio:16/10;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--ink-soft); font-size:0.85rem;
+  }
+  .work-item h3{ font-size:1.6rem; font-weight:600; font-family:'Space Grotesk', sans-serif; font-weight:500; }
+  .work-item .desc{ margin-top:10px; color:var(--ink); max-width:56ch; font-size:0.98rem; }
+  .work-item .tags{ margin-top:16px; display:flex; flex-wrap:wrap; gap:8px 16px; }
+  .work-item .tags span{ font-size:0.78rem; color:var(--ink-soft); }
+  .work-item .links{ margin-top:16px; display:flex; gap:20px; font-size:0.85rem; }
+  .work-item .links a{ border-bottom:1px solid var(--ink-soft); }
+  .work-item .links a:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* WORDS */
+  .words-grid{
+    display:grid; grid-template-columns:1fr; gap:64px; max-width:680px;
+  }
+  .word-piece .label{ margin-bottom:10px; }
+  .word-piece .text{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:1.2rem;
+    line-height:1.85;
+    white-space:pre-line;
+  }
+  .word-piece.poem .text{ font-style:italic; font-size:1.3rem; }
+  .word-piece + .word-piece{ padding-top:8px; border-top:1px solid var(--line); }
+
+  /* VISUALS */
+  .visuals-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:20px;
+  }
+  .visuals-grid figure{
+    background:var(--paper-2); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--ink-soft); font-size:0.78rem; text-align:center;
+    padding:12px; overflow:hidden;
+  }
+  .visuals-grid figure img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .v1{ grid-column:span 4; aspect-ratio:4/3; }
+  .v2{ grid-column:span 2; aspect-ratio:3/4; }
+  .v3{ grid-column:span 2; aspect-ratio:1/1; }
+  .v4{ grid-column:span 3; aspect-ratio:5/4; }
+  .v5{ grid-column:span 3; aspect-ratio:5/4; }
+  @media (max-width:760px){
+    .visuals-grid{ grid-template-columns:repeat(2,1fr); }
+    .v1,.v2,.v3,.v4,.v5{ grid-column:span 2; aspect-ratio:4/3; }
+  }
+
+  /* ABOUT */
+  .about-layout{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px;
+  }
+  @media (max-width:820px){ .about-layout{ grid-template-columns:1fr; } }
+  .about-copy p{ margin-bottom:20px; font-size:1.05rem; line-height:1.75; max-width:52ch; }
+  .about-copy p.lede{ font-family:'Plus Jakarta Sans', sans-serif; font-size:1.4rem; font-style:italic; line-height:1.6; }
+  .learning-list{ list-style:none; display:flex; flex-direction:column; gap:14px; }
+  .learning-list li{
+    display:flex; align-items:baseline; gap:14px;
+    padding-bottom:14px; border-bottom:1px solid var(--line);
+    font-size:0.95rem;
+  }
+  .learning-list li .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); flex:none; }
+
+  /* FOOTER */
+  footer.site{
+    border-top:1px solid var(--line);
+    padding:40px 0 56px;
+  }
+  .footer-row{
+    display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;
+  }
+  .footer-links{ display:flex; gap:28px; flex-wrap:wrap; }
+  .footer-links a{
+    font-size:0.9rem;
+    border-bottom:1px solid var(--ink-soft);
+  }
+  .footer-links a:hover{ color:var(--accent); border-color:var(--accent); }
+  .footer-note{ font-size:0.8rem; color:var(--ink-soft); }
+
+  /* On repeat — Spotify embeds */
+  .on-repeat{ margin-bottom:44px; padding-bottom:36px; border-bottom:1px solid var(--line); }
+  .on-repeat .label{ display:block; margin-bottom:18px; }
+  .repeat-tracks{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+  }
+  @media (max-width:760px){ .repeat-tracks{ grid-template-columns:1fr; } }
+  .repeat-tracks iframe{
+    border-radius:8px; border:1px solid var(--line); display:block; width:100%;
+  }
+  .track-card{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    border:1px solid var(--line); border-radius:8px; padding:16px 18px;
+    background:var(--paper-2);
+  }
+  .track-card .tc-name{ font-weight:500; }
+  .track-card .tc-artist{ font-size:0.85rem; color:var(--ink-soft); }
+  .track-card a{ font-size:0.82rem; border-bottom:1px solid var(--ink-soft); white-space:nowrap; }
+  .track-card a:hover{ color:var(--accent); border-color:var(--accent); }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="shell nav-row">
+    <a href="#home" class="wordmark alter-ego" data-link data-target="home" aria-label="Vince, home. Hover for a small surprise.">
+      <span class="wm-stack">
+        <span class="wm-real">Vince</span>
+        <span class="wm-alt" aria-hidden="true"><span style="color:#E4402C">B</span><span style="color:#E8961C">i</span><span style="color:#D9B520">n</span><span style="color:#4C8A4C">c</span><span style="color:#3C6FB0">e</span></span>
+      </span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="primaryNav">Menu</button>
+    <nav class="primary" id="primaryNav" aria-label="Primary">
+      <ul>
+        <li><a href="#work" data-link data-target="work">Work</a></li>
+        <li><a href="#words" data-link data-target="words">Words</a></li>
+        <li><a href="#visuals" data-link data-target="visuals">Visuals</a></li>
+        <li><a href="#about" data-link data-target="about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="shell">
+
+  <!-- HOME -->
+  <section id="view-home" class="view active">
+    <div class="home-hero">
+      <div>
+        <h1 class="display">Vince<br>Makes<br>Things.</h1>
+        <p class="role serif">Third-year BSIT student, PUP Open University. <em>Still figuring out which of these things I'm best at — so I'm doing all of them.</em></p>
+      </div>
+      <div class="home-meta">
+        <span class="label">BASED IN — PHILIPPINES</span>
+        <span class="label">CURRENTLY — LEARNING AI AUTOMATION</span>
+        <span class="label">BACKGROUND — MAWD, STI COLLEGE</span>
+      </div>
+    </div>
+
+    <div class="split-preview">
+      <a href="#work" data-link data-target="work" class="preview-card">
+        <span class="label">FROM WORK</span>
+        <div class="frame"><img src="images/push2cart-homepage.webp" alt="Push2Cart homepage screenshot" style="width:100%;height:100%;object-fit:cover;"></div>
+        <h3>Push2Cart</h3>
+        <div class="sub">Next.js · TypeScript · Tailwind CSS</div>
+      </a>
+      <a href="#words" data-link data-target="words" class="preview-card words">
+        <span class="label">FROM WORDS</span>
+        <div class="frame">
+          <p>You are the only rain I won't bring my<br>umbrella for — for your rain are your tears,<br>and I want to feel it fall through me.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="view-work" class="view">
+    <div class="page-head">
+      <span class="label">WORK</span>
+      <h2 class="display">Things I've built.</h2>
+      <p>A few things I've actually built.</p>
+    </div>
+    <div class="work-list">
+      <div class="work-item">
+        <div class="thumb"><img src="images/push2cart-homepage.webp" alt="Push2Cart homepage screenshot" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div>
+          <h3>Push2Cart</h3>
+          <p class="desc">A student-built e-commerce platform with an arcade-themed interface and a gamified shopping experience — product browsing, cart and order management, auth, an admin dashboard, and a claw-machine mini-game with rewards. Led development end to end. Still being finished.</p>
+          <div class="tags"><span>Next.js</span><span>TypeScript</span><span>Tailwind CSS</span><span>Supabase</span><span>Vercel</span></div>
+          <div class="links"><a href="https://push2cart.vercel.app/" target="_blank" rel="noopener">Live site</a><a href="https://github.com/binsuhavingfun/Push2Cart" target="_blank" rel="noopener">GitHub</a></div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="thumb"><img src="images/booklat-dashboard.webp" alt="Booklat dashboard screenshot" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div>
+          <h3>Booklat</h3>
+          <p class="desc">A student-focused book exchange and donation platform designed to make academic resources more accessible. Students can list, exchange, or donate unused books through a simple, organized interface, with student verification built in to keep the community trustworthy. Worked as UI/UX Designer &amp; Prototype Developer — designed the interface and user flows in Figma and built an interactive prototype using Figma Make.</p>
+          <div class="tags"><span>Figma</span><span>Figma Make</span></div>
+          <div class="links"><a href="https://www.figma.com/make/39PCl5PdZdnRjUmFZ7JhsE/Booklat?p=f&t=BwZfxlK4hHokM6B4-0&fullscreen=1" target="_blank" rel="noopener">View prototype</a></div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="thumb"><img src="images/melody-milktea-wireframe.webp" alt="Melody Milktea app wireframe screenshot" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div>
+          <h3>Melody Milktea</h3>
+          <p class="desc">A UI/UX wireframe and prototype for a milk tea ordering app, created during TESDA NC III Visual Graphics Design training. Designed the flow and screens in Figma, focused on a simple, approachable ordering experience. Part of learning core visual design and prototyping fundamentals outside of coding.</p>
+          <div class="tags"><span>Figma</span></div>
+          <div class="links"><a href="https://www.figma.com/proto/CnOw9kU0nEqcPIApvsfbiR/Melody-Milktea-Wireframe?t=ig53YV4CdMMNuE79-1&node-id=6-383" target="_blank" rel="noopener">View prototype</a></div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="thumb"><img src="images/ben-dreams.webp" alt="Ben Dreams title screen showing the main menu and Ben's Room door" style="width:100%;height:100%;object-fit:cover;"></div>
+        <div>
+          <h3>Ben Dreams</h3>
+          <p class="desc">A Godot game made as a school project. Led the project team and managed task distribution, wrote the game's story and narrative, and guided the team through development.</p>
+          <div class="tags"><span>Godot</span></div>
+          <div class="links"><a href="https://github.com/binsuhavingfun/bendreams" target="_blank" rel="noopener">GitHub</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORDS -->
+  <section id="view-words" class="view">
+    <div class="page-head">
+      <span class="label">WORDS</span>
+      <h2 class="display">Poetry &amp; writing.</h2>
+      <p>A few poems and short pieces.</p>
+    </div>
+    <div class="words-grid">
+      <div class="word-piece poem">
+        <span class="label">POEM — 8/6/26</span>
+        <p class="text">In the mood for rain
+
+You are the only rain I won't bring my umbrella for
+For your rain are your tears, and I want to feel it fall through me
+I am not here to protect myself from cold, I'm here to comfort you</p>
+      </div>
+      <div class="word-piece poem">
+        <span class="label">POEM — 2/26/26</span>
+        <p class="text">Untitled
+
+In blood, forgotten dreams
+Same mistakes, same old scream
+Horrors of reality, you're gonna sink
+But you will never forget your own drink</p>
+      </div>
+      <div class="word-piece">
+        <span class="label">REFLECTION — 6/20/26</span>
+        <p class="text">On Relationships
+
+I'm at my 20s, and I think people should stop asking about our relationship status. Some people are simply happy and content with having friends.
+
+I guess in today's generation, the main reason why some remain single is because of our self awareness. We are aware of our flaws, insecurities, and what kind of person we can be if we commit to a relationship.
+
+If you know someone who doesn't have a significant other, just be with them. Let them be, do not put pressure into them. They might be having the best time of their life, we never know. Some people are just used to being alone. Even without a partner, we could still feel loved, seen, and appreciated.</p>
+      </div>
+      <div class="word-piece">
+        <span class="label">REFLECTION — 6/20/26</span>
+        <p class="text">On Reading
+
+When I was younger, I love to read, and I still do, but I don't read that much anymore. I've been busy, but I don't think that's an excuse. I think I should make time for it, because reading helps in different aspects of our lives.
+
+Reading can be a way for us to feel. Reading fiction or even non-fiction, can help us exercise our emotions, by reading, we are able to really relate and empathize with the characters. This can be a good outlet for our thoughts, emotions, etc.
+
+As a person who loves to create, or just have unlimited thoughts in my head, I feel like reading allows us to be a creative in a way. Like when we read a story that has no definite ending, we are able to think of our own ending. We can also be inspired to write or just do something, because of reading. After reading a book, there's this feeling that makes you want to become somebody or makes you want to do something that has a purpose.
+
+With the issues that we are experiencing right now, I do think that we really need to read, we can start with small steps. Reading can help us think critically. By reading, we are able to comprehend what is really happening in the world. We learn to separate the facts from misinformation.
+
+So all in all, reading is a superpower. You don't only read for yourself, you read for the world.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISUALS -->
+  <section id="view-visuals" class="view">
+    <div class="page-head">
+      <span class="label">VISUALS</span>
+      <h2 class="display">Art, doodles, photos.</h2>
+      <p>Things I made or things I kept. Not a professional photography portfolio — just pictures I liked enough to hold onto.</p>
+    </div>
+    <div class="visuals-grid">
+      <figure class="v1"><img src="images/visual-rick-and-morty.webp" alt="Doodle of Rick and Morty"></figure>
+      <figure class="v2"><img src="images/visual-sunlight-trees.webp" alt="Photograph of sunlight through trees"></figure>
+      <figure class="v3"><img src="images/visual-face-doodle.webp" alt="Abstract doodle of a face"></figure>
+      <figure class="v4"><img src="images/visual-billiards.webp" alt="Doodle of a billiards table"></figure>
+      <figure class="v5"><img src="images/visual-black-cat.webp" alt="A black cat sitting among plants by a fence"></figure>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="view-about" class="view">
+    <div class="page-head">
+      <span class="label">ABOUT</span>
+      <h2 class="display">Who's doing this.</h2>
+    </div>
+    <div class="about-layout">
+      <div class="about-copy">
+        <p class="lede">I'm still figuring things out. I just like making things and learning whatever catches my attention.</p>
+        <p>I'm a third-year BSIT student at PUP Open University. Before that, I studied Mobile App and Web Development at STI College Pasay-EDSA. I'd call myself a jack of all trades, master of none — I get interested in something, go deep for a while, and then something else catches my attention. That's not a phase I'm trying to grow out of. It's just how I work.</p>
+        <p>I work with AI a lot, especially when I'm building or learning something. It helps me move faster and understand things, but I still do the thinking, make the decisions, figure out what I actually want to build, and decide what stays and what doesn't. A lot of what I know also comes from self-study. Back in senior high, I even learned coding by writing code on paper, which sounds funny now, but that's how we did it. I'm still learning and developing my skills.</p>
+        <p>I love learning about anything that catches my attention. Lately that's meant reading Substack, cooking, and losing hours to Dota 2 (I used to play Teamfight Tactics and reached Master twice). Haruki Murakami is my favorite author, and Nexpo my favorite YouTuber — I've watched basically everything he's made. I think my curiosity and my technical side connect more than people expect: I'm often thinking "what if I could build this?"</p>
+        <p class="lede">I'm not perfect. I don't know everything, and I still make mistakes.</p>
+      </div>
+      <div>
+        <span class="label" style="display:block; margin-bottom:18px;">CURRENTLY LEARNING</span>
+        <ul class="learning-list">
+          <li><span class="dot"></span>AI automation &amp; n8n</li>
+          <li><span class="dot"></span>REST APIs &amp; webhooks</li>
+          <li><span class="dot"></span>OAuth &amp; automation fundamentals</li>
+          <li><span class="dot"></span>Zapier</li>
+          <li><span class="dot"></span>Web development, generally, always</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="shell">
+    <div class="on-repeat">
+      <span class="label">A FEW FAVORITES</span>
+      <div class="repeat-tracks">
+        <div class="track-card">
+          <div><div class="tc-name">Be That Easy</div><div class="tc-artist">Sade</div></div>
+          <a href="https://open.spotify.com/track/5KADKKJqxxF2d0a9Ir2lK3" target="_blank" rel="noopener">Listen on Spotify ↗</a>
+        </div>
+        <div class="track-card">
+          <div><div class="tc-name">Young &amp; Dumb</div><div class="tc-artist">Cigarettes After Sex</div></div>
+          <a href="https://open.spotify.com/track/5A8o4QlSYTe4OxSrNiImSc" target="_blank" rel="noopener">Listen on Spotify ↗</a>
+        </div>
+        <div class="track-card">
+          <div><div class="tc-name">Whereabouts</div><div class="tc-artist">Stevie Wonder</div></div>
+          <a href="https://open.spotify.com/track/3TWhGtyMAbX3roxYXk64fO" target="_blank" rel="noopener">Listen on Spotify ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-row">
+    <div class="footer-links">
+      <a href="files/resume.pdf" download="Vince_Paglicawan_Resume.pdf">Resume</a>
+      <a href="mailto:vincetarogpaglicawan@gmail.com" id="emailLink" data-email="vincetarogpaglicawan@gmail.com">Email</a>
+      <a href="https://github.com/binsuhavingfun" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/vince-paglicawan-092316399/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    </div>
+    <p class="footer-note">© 2026 Vince Paglicawan. All work, writing, and design shown here is my own.</p>
+</footer>
+
+<script>
+  const links = document.querySelectorAll('[data-link]');
+  const views = document.querySelectorAll('.view');
+  const menuBtn = document.getElementById('menuBtn');
+  const primaryNav = document.getElementById('primaryNav');
+
+  function show(target){
+    views.forEach(v => v.classList.remove('active'));
+    const el = document.getElementById('view-' + target);
+    if(el){ el.classList.add('active'); }
+    links.forEach(l => {
+      if(l.dataset.target === target){ l.setAttribute('aria-current','page'); }
+      else { l.removeAttribute('aria-current'); }
+    });
+    window.scrollTo({top:0, behavior:'instant'});
+  }
+
+  links.forEach(l => {
+    l.addEventListener('click', (e) => {
+      e.preventDefault();
+      show(l.dataset.target);
+      primaryNav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+      history.replaceState(null,'','#' + l.dataset.target);
+    });
+  });
+
+  menuBtn.addEventListener('click', () => {
+    const open = primaryNav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  const initial = location.hash.replace('#','') || 'home';
+  show(['home','work','words','visuals','about'].includes(initial) ? initial : 'home');
+
+  const emailLink = document.getElementById('emailLink');
+  if(emailLink){
+    emailLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      const showingEmail = emailLink.textContent === emailLink.dataset.email;
+      if(showingEmail){
+        emailLink.textContent = 'Email';
+      } else {
+        emailLink.textContent = emailLink.dataset.email;
+        try{ navigator.clipboard.writeText(emailLink.dataset.email); }catch(err){}
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
